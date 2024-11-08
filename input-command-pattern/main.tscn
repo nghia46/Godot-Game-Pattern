@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck7cxctrig6wi"]
+
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_tb2ta"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="3_uxwgj"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GameController" type="Node2D" parent="." node_paths=PackedStringArray("player", "inputHandler")]
+script = ExtResource("1_tb2ta")
+player = NodePath("../Player")
+inputHandler = NodePath("")
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("3_uxwgj")

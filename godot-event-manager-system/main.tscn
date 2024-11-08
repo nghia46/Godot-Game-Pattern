@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjd36bhmh6npm"]
+
+[ext_resource type="Script" path="res://Scripts/EventManager.cs" id="1_giyfg"]
+[ext_resource type="Script" path="res://Scripts/ScoreManager.cs" id="2_4bmxj"]
+[ext_resource type="Script" path="res://Scripts/UIController.cs" id="2_ld1vc"]
+
+[node name="Main" type="Node2D"]
+
+[node name="EventManager" type="Node2D" parent="."]
+script = ExtResource("1_giyfg")
+
+[node name="UIController" type="Node2D" parent="." node_paths=PackedStringArray("IncrementButton", "DecrementButton", "BonusButton", "PenaltyButton")]
+script = ExtResource("2_ld1vc")
+IncrementButton = NodePath("../CanvasLayer/Control/ButtonContainer/BtnIncrement")
+DecrementButton = NodePath("../CanvasLayer/Control/ButtonContainer/BtnDecrement")
+BonusButton = NodePath("../CanvasLayer/Control/ButtonContainer/BtnBonus")
+PenaltyButton = NodePath("../CanvasLayer/Control/ButtonContainer/BtnPenalty")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("ScoreLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_4bmxj")
+ScoreLabel = NodePath("Score")
+
+[node name="Score" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_top = 56.0
+offset_right = 21.5
+offset_bottom = 79.0
+grow_horizontal = 2
+text = "Score
+"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VFlowContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.5
+offset_top = -20.0
+offset_right = 36.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnIncrement" type="Button" parent="CanvasLayer/Control/ButtonContainer"]
+layout_mode = 2
+text = "Increment"
+
+[node name="BtnDecrement" type="Button" parent="CanvasLayer/Control/ButtonContainer"]
+layout_mode = 2
+text = "Decrement"
+
+[node name="BtnBonus" type="Button" parent="CanvasLayer/Control/ButtonContainer"]
+layout_mode = 2
+text = "Bonus"
+
+[node name="BtnPenalty" type="Button" parent="CanvasLayer/Control/ButtonContainer"]
+layout_mode = 2
+text = "Penalty"
